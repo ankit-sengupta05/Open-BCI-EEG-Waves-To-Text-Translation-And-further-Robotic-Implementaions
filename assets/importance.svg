@@ -1,0 +1,32 @@
+<svg width="980" height="260" viewBox="0 0 980 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Why the project matters">
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1">
+      <stop offset="0%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="980" height="260" rx="24" fill="#111827"/>
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="90" y="58" fill="#F8FAFC" font-size="28" font-weight="700">Why this matters</text>
+
+    <rect x="70" y="90" width="200" height="110" rx="18" fill="#0F766E" fill-opacity="0.9"/>
+    <text x="170" y="118" text-anchor="middle" fill="#ECFEFF" font-size="18" font-weight="700">Healthcare</text>
+    <text x="170" y="146" text-anchor="middle" fill="#CCFBF1" font-size="13">communication access</text>
+    <text x="170" y="170" text-anchor="middle" fill="#CCFBF1" font-size="13">for patients</text>
+
+    <rect x="310" y="90" width="200" height="110" rx="18" fill="#4338CA" fill-opacity="0.95"/>
+    <text x="410" y="118" text-anchor="middle" fill="#EEF2FF" font-size="18" font-weight="700">Robotics</text>
+    <text x="410" y="146" text-anchor="middle" fill="#E0E7FF" font-size="13">intent-driven</text>
+    <text x="410" y="170" text-anchor="middle" fill="#E0E7FF" font-size="13">human-robot action</text>
+
+    <rect x="550" y="90" width="200" height="110" rx="18" fill="#B45309" fill-opacity="0.95"/>
+    <text x="650" y="118" text-anchor="middle" fill="#FFFBEB" font-size="18" font-weight="700">AI research</text>
+    <text x="650" y="146" text-anchor="middle" fill="#FEF3C7" font-size="13">representation</text>
+    <text x="650" y="170" text-anchor="middle" fill="#FEF3C7" font-size="13">learning + planning</text>
+
+    <rect x="790" y="90" width="140" height="110" rx="18" fill="#BE123C" fill-opacity="0.92"/>
+    <text x="860" y="118" text-anchor="middle" fill="#FFE4E6" font-size="18" font-weight="700">Impact</text>
+    <text x="860" y="146" text-anchor="middle" fill="#FFE4E6" font-size="13">brain-computer</text>
+    <text x="860" y="170" text-anchor="middle" fill="#FFE4E6" font-size="13">interfaces</text>
+  </g>
+</svg>
