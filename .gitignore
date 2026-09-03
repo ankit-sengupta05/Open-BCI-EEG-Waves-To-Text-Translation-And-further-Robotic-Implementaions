@@ -1,3 +1,6 @@
+# Local setup script (kept local, not pushed)
+setup-git2.ps1
+
 # Environment / secrets
 .env
 .env.*
