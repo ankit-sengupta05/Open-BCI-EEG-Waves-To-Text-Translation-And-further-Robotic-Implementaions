@@ -1,4 +1,4 @@
-﻿# NeuroLink
+# NeuroLink
 
 ## EEG-to-Text and Brain-to-Robot Intelligence Platform
 
@@ -47,6 +47,14 @@ EEG -> preprocessing -> representation learning -> transformer encoder
 3. **EEG-to-robot intent**: more realistic robotics path where EEG becomes structured task instructions.
 
 This staged approach matters because imagined speech from non-invasive EEG is scientifically difficult due to noise, variability, and low signal quality. Research progress is more realistic when we build constrained steps first.
+
+## Electrode Placement
+
+<p align="center">
+  <img src="assets/electrode_placement.png" alt="Electrode Placement (10-20 System)" width="60%" />
+</p>
+
+This reference image shows the standard 10-20 system external electrode placements, highlighting connections to the central Cz node for signal processing.
 
 ## Documentation
 
