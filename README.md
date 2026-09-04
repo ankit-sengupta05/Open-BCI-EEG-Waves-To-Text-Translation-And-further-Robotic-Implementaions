@@ -51,10 +51,11 @@ This staged approach matters because imagined speech from non-invasive EEG is sc
 ## Electrode Placement
 
 <p align="center">
-  <img src="assets/electrode_placement.png" alt="Electrode Placement (10-20 System)" width="60%" />
+  <img src="assets/electrode_placement.png" alt="Electrode Placement (10-20 System)" width="45%" />
+  <img src="assets/electrode_pathway.png" alt="Electrode Pathway Reference" width="45%" />
 </p>
 
-This reference image shows the standard 10-20 system external electrode placements, highlighting connections to the central Cz node for signal processing.
+These reference images show the standard 10-20 system external electrode placements, highlighting connections to the central Cz node for signal processing, as well as sequential pathways along the left hemisphere (e.g., Fp1->F7->T3->T5->O1 and Fp1->F3->C3->P3->O1).
 
 ## Documentation
 
