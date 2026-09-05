@@ -85,3 +85,6 @@ temp/
 *.tmp
 *.bak
 *.swp
+
+# Private handwritten notes (do not push)
+assets/Notes/

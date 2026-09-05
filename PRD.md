@@ -48,6 +48,10 @@ The product is an experimental platform for measurable research, not a claim of 
 
 Imagined speech is scientifically challenging because non-invasive EEG has low signal-to-noise ratio, strong subject variability, and context-dependent neural patterns. The platform therefore prioritizes constrained tasks and semantic commands before open-ended text generation.
 
+### The language-independent thought hypothesis
+
+Humans may think with the **same underlying intent** regardless of the language they use. What varies between individuals is the language medium chosen to express that thought. What cannot vary is the thought itself — which is fundamentally unique irrespective of whether a person is hearing, deaf, or mute. If this hypothesis holds, decoding intent from EEG at the pre-linguistic level becomes a more tractable goal than decoding surface language.
+
 ## 3. System Model
 
 ```mermaid
@@ -87,17 +91,21 @@ flowchart LR
 - **Closed-loop by design:** perception and environment feedback are part of the intelligence system.
 - **Reproducible science:** version datasets, subjects, preprocessing, models, metrics, and experiments.
 - **Safety first:** no physical action without authorization, confidence gates, and an emergency stop path.
+- **Millisecond latency target:** the system must deliver predictions at ms-level latency; both hardware and software must be co-optimised to meet this target.
+- **Frontal lobe primacy:** as most instructions and thoughts originate from the frontal lobe, the model and electrode placement will primarily focus on the front-to-mid brain region.
+- **Adaptive personalisation:** after initial training on a base vocabulary, the model should use Reinforcement Learning (RL) to grow and learn new words over time with the individual user.
 
 ## 5. Research Workstreams
 
-| Workstream              | Questions                                           | Prototype deliverable                        |
-| ----------------------- | --------------------------------------------------- | -------------------------------------------- |
-| Acquisition             | Can recordings be synchronized and quality-scored?  | EEG ingestion and session metadata           |
-| Signal processing       | Which filters and artifact controls generalize?     | Reproducible preprocessing pipeline          |
-| Representation learning | Can subject-aware embeddings separate task signals? | Encoder baseline and embedding reports       |
-| Decoding                | Which model and windowing strategy works best?      | Classifier, language decoder, intent decoder |
-| Robotics                | Can commands be grounded safely in a scene?         | Simulator-first planner and robot adapter    |
-| Evaluation              | Does performance survive new sessions and users?    | Benchmark harness and experiment registry    |
+| Workstream              | Questions                                                               | Prototype deliverable                        |
+| ----------------------- | ----------------------------------------------------------------------- | -------------------------------------------- |
+| Acquisition             | Can recordings be synchronized and quality-scored?                      | EEG ingestion and session metadata           |
+| Signal processing       | Which filters and artifact controls generalize?                         | Reproducible preprocessing pipeline          |
+| Representation learning | Can subject-aware embeddings separate task signals?                     | Encoder baseline and embedding reports       |
+| Decoding                | Which model and windowing strategy works best?                          | Classifier, language decoder, intent decoder |
+| Intent & emotion        | Can the model extract intent and emotional context beyond literal text? | Intent decoder and emotion classifier        |
+| Robotics                | Can commands be grounded safely in a scene?                             | Simulator-first planner and robot adapter    |
+| Evaluation              | Does performance survive new sessions and users?                        | Benchmark harness and experiment registry    |
 
 ## 6. Milestones and Exit Criteria
 
@@ -153,6 +161,39 @@ graph TD
 | Robotics  | simulator first, adapter second             | hardware actions gated and logged   |
 | Quality   | pre-commit, secret scan, experiment reports | reproducible before scale           |
 
+### Dataset design principles (from research notes)
+
+The ideal dataset format mirrors classical voice-to-text data structure:
+
+```
+[ Multiple EEG waves with timestamps (e.g., 0:00 -> 1:00) ]
+          +
+[ Transcript: "I am a person" -> mapped to those timestamps ]
+```
+
+- **Multi-user same-transcript:** for each transcript, collect EEG from multiple users to generalise the wave pattern and reduce inter-subject noise (noise = individual side thoughts).
+- **Avoid bulk single-transcript mapping:** long passages mapped to a single bulk transcript cannot be reliably chunked and are not recommended.
+
+### Training process (from research notes)
+
+```
+Raw Noisy Data -> [User 1] [User 2] [User 3] [User 4]
+                         | aggregation
+               [ Generalised waveform ] <- reduces noise (side thoughts)
+                         |
+               Transcript output
+```
+
+- At inference time the input waveform is matched against the generalised pattern; the most similar pattern retrieves its associated transcript.
+- **Architecture options:** Transformer (chunk-based n-byte prediction) or LSTM (longer context, richer per-chunk meaning).
+
+### Hardware requirements (from research notes)
+
+- Small form factor device.
+- Superfast compute power.
+- Large unified shared memory with fast access directly addressable by the CPU or processor.
+- Optimised for millisecond-latency inference.
+
 ## 10. Open Research Questions
 
 1. Which EEG montage, sampling rate, and task protocol give the strongest signal?
@@ -160,6 +201,10 @@ graph TD
 3. Can uncertainty calibration reliably trigger abstention?
 4. Which semantic command vocabulary is expressive enough for useful robot tasks while remaining learnable?
 5. How should environmental feedback update decoding without creating unsafe feedback loops?
+6. Can the model decode **intent** at a pre-linguistic level, independent of the spoken or thought language?
+7. What is the minimum number of multi-user samples needed per transcript to reliably generalise the wave pattern?
+8. How quickly can an RL-based personalisation loop learn new vocabulary words from a single user over repeated sessions?
+9. Can Transformer or LSTM chunk-based architectures sustain sufficient context across long EEG passages?
 
 ## 11. Definition of Done
 

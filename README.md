@@ -48,6 +48,33 @@ EEG -> preprocessing -> representation learning -> transformer encoder
 
 This staged approach matters because imagined speech from non-invasive EEG is scientifically difficult due to noise, variability, and low signal quality. Research progress is more realistic when we build constrained steps first.
 
+## Two-Model Architecture
+
+The platform is designed around two distinct models:
+
+| Model                          | Role                                                                                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------ |
+| **Model 1 — EEG-to-Text**      | Trained on labelled, formatted data to translate EEG wave patterns into raw text                 |
+| **Model 2 — Intent & Emotion** | Decrypts the underlying intent for each decoded statement and understands the associated emotion |
+
+The core hypothesis: humans think with the **same intent** regardless of language — what varies is the language medium used to express that thought. EEG may let us access intent before it is encoded into language.
+
+## Prototype Form Factor
+
+For consumer/commercial use the device can take several everyday forms, all oriented around frontal lobe electrode placement:
+
+| Form Factor                | Notes                                              |
+| -------------------------- | -------------------------------------------------- |
+| **Cap**                    | General consumer use, handy for everyday carry     |
+| **Headband**               | Tight frontal-lobe focus, precise output           |
+| **Headset (Emotiv-style)** | Easy to carry, predominantly frontal lobe coverage |
+
+**Possible partnerships:**
+
+- **Emotiv** — hardware (existing EEG headset platform)
+- **OpenBCI Dev Kit** — open-source BCI hardware
+- **ElevenLabs** — realistic synthetic voice output for voiceless users
+
 ## Electrode Placement
 
 <p align="center">
@@ -60,6 +87,8 @@ These reference images show the standard 10-20 system external electrode placeme
 ## Documentation
 
 - [PRD.md](PRD.md) — complete product requirements and research plan
+- [notes.md](notes.md) — transcribed research notes (concepts, requirements, dataset design, training ideas)
+- [resources.md](resources.md) — EEG datasets and external resources
 - [setup-git2.cmd](setup-git2.cmd) — direct Windows setup launcher
 - [setup-git2.sh](setup-git2.sh) — direct shell launcher
 
